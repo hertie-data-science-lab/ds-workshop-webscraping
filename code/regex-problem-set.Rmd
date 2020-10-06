@@ -1,0 +1,79 @@
+---
+title: "Regular Expressions: Problem Set"
+author: "YOUR NAME"
+output: html_document
+---
+
+
+### 0. Preparation: Load packages
+
+```{r, message = FALSE}
+# enter your R code here
+library(tidyverse) # example
+library(rvest)
+sum(1, 2
+```
+
+
+<br>
+
+### 1. The ultimate regular expression
+
+Find a regular expression that matches anything of any length! Prove that it works using several examples.
+
+
+```{r, eval = TRUE}
+# enter your R code here
+```
+
+
+<span style="color:blue">
+If you want to add a comment outside the R code block, use this <span> block! (just copy the <span>...</span> lines for future comments in the Rmd file.)
+</span>
+
+<br>
+
+### 2. Finding strings that are matched by regular expressions
+
+Describe the types of strings that conform to the following regular expressions and construct an example that is matched by the regular expression.
+
+a. [0-9]+\\$
+b. b[a-z]{1,4}
+c. .*?\\.txt$
+d. \\d{2}/\\d{2}/\\d{4}
+e. <(.+?)>.+?</\\1>
+
+```{r}
+# Example
+str_extract_all("Phone 150$, TV 690$", "[0-9]+\\$") # Answer: this regex describes prices in dollars
+
+# enter your R code here to solve b. to e.
+```
+
+
+<br>
+
+### 3. Manipulating an email address
+
+Consider the mail address  datalover89[at]aol[dot]com. Now, complete the following tasks.
+
+a. Transform the string to a standard mail format (i.e., replace the square brackets with the appropriate symbols) using regular expressions.
+b. Now extract the local-part ("datalover89") and the domain ("aol") separately. 
+
+```{r}
+# enter your R code here
+```
+
+
+<br>
+
+### 4. A secret message
+The following code hides a secret message. Crack it with R and regular expressions. Once you have cracked it, try to collapse the solution in one single string. <i>Hint: Some of the characters are more revealing than others!</i>
+
+```{r}
+secret <- "clcopCow1zmstc0d87wnkig7OvdicpNuggvhryn92Gjuwczi8hqrfpRxs5Aj5dwpn0TanwoUwisdij7Lj8kpf03AT5Idr3coc0bt7yczjatOaootj55t3Nj3ne6c4Sfek.r1w1YwwojigOd6vrfUrbz2.2bkAnbhzgv4R9i05zEcrop.wAgnb.RqoE65fGEa1otfb7wXm24k.6t3sH9zqe5fy89n6Ed5t9kc4fR905gmc4Ogxo5nhk!gr"
+
+# enter your R code here
+```
+
+
