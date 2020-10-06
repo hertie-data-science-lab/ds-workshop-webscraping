@@ -1,6 +1,6 @@
 # SCRIPTS/Hertie Data Science Workshop Series 
 
-The goal of this workshop series is to create a space for faculty and researchers at the Hertie School and SCRIPTS to efficiently catch up with recent developments in data science topics and tools. In the spring semester, we will focus on the basics of data manipulation and visualization in R, text as data, the gathering of information from online sources, and principles of machine learning.
+The goal of this workshop series is to create a space for faculty and researchers at the Hertie School and SCRIPTS to efficiently catch up with recent developments in data science topics and tools. In the 2020 fall semester, we will start off with a webinar on web data collection with R.
 
 
 ### Contact
