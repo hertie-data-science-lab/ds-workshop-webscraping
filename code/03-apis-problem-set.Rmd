@@ -1,0 +1,48 @@
+---
+title: "APIs: problem set"
+author: "YOUR NAME"
+output: html_document
+---
+
+ <br>
+
+```{r, warning = FALSE, message = FALSE}
+# your R code here
+```
+
+ <br>
+
+#### 1. Accessing Wikipedia pageviews data
+
+The Wikimedia REST API provides access to Wikimedia content and data in machine-readable formats.
+
+a. Familiarize yourself with the API by studying the documentation at https://wikimedia.org/api/rest_v1/. The Wikimedia Services team expects you to specify responsible queries. How should your queries look like in order to comply to the rules? (Answer in a couple of sentences)
+
+b. One of the endpoints provides access to the pageview counts of a given Wikipedia article in a given date range. Give the request URL for an example query of this endpoint! You can freely choose all available parameters, but the URL should lead to a valid response.
+
+c. The `pageviews` package is an R client of the pageviews endpoint of the Wikimedia REST API. Check out how the package works. Then, specify two queries - one for the article on Donald Trump and one for Hillary Clinton on the English Wikipedia between January and December 2016. Based on the data returned by the API, plot both time-series of pageviews against each other!
+
+<span style="color:blue">
+Use this HTML snippet to answer the first couple of questions.
+</span>
+
+```{r, eval = TRUE}
+# your R code here
+```
+
+ <br>
+
+#### 2. Your own scraping adventure
+
+Choose a website or API. Access data from the resource using the techniques you have learned in the course. Then, clean the data and provide a brief example analysis or visualization. You are completely free in choosing the scenario and output. What is required is (a) documentation of a scraping effort (or effort to access an API), (b) documentation of the data tidying effort if necessary, (c) some descriptives or analyses using the data you collected. 
+
+```{r, eval = TRUE}
+# your R code here
+```
+
+
+
+
+
+
+
