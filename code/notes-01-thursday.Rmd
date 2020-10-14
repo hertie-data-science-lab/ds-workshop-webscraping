@@ -1,0 +1,97 @@
+---
+title: "A Primer to Web Scraping with R - Meeting 1 Notes"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+
+## Workshop logistics
+---------------------------------
+
+- Code and materials: https://github.com/hertie-data-science-lab/ds-workshop-webscraping
+- Book? https://www.dropbox.com/s/7pooidefpwzp6wo/wiley-adcr-v2.pdf?dl=0
+- Issues, questions
+- Your experience with web technologies? And R?
+
+
+## Today's agenda
+---------------------------------
+
+2-2.50pm: Scraping static webpages
+3-3.50pm: Scraping dynamic webpages
+
+
+## Static scraping case study: mapping breweries
+---------------------------------
+
+See 01-case-study-2-breweries.r
+
+
+## Your questions on regex and static web scraping
+---------------------------------
+
+<br>
+
+*SelectorGadget*
+
+I tried to play a bit with the SelectorGadget and it worked pretty well. Could you let us know more about the 20-30% where you said it would most likely not work and how you would approach such a case? Do you have a real life example where we could see how you went about it?
+
+
+```{r}
+url <- "https://en.wikipedia.org/wiki/List_of_female_scientists_in_the_20th_century"
+browseURL(url)
+url_parsed <- read_html(url)
+xpath <- "//h2[./span[@id='Anthropology']]/following-sibling::ul[1]/li"
+html_nodes(url_parsed, xpath = xpath) %>% html_text()
+```
+
+<br>
+
+*Python vs. R*
+
+I often heard that using Python should be preferred over R for scraping tasks since Python is more versatile than R. Is that true?
+ 
+
+<br> 
+
+*Non-Latin scripts?* (etiennehoera)
+
+I would like to scrape text in non-latin scripts (Chinese text specifically). Is there anything special I need to take care of? Matching seems to work using the same tools as in the examples.
+
+
+## Dynamic scraping case study: querying IMDb
+-------------------------------------------------
+
+See 03-case-study-selenium.r
+
+
+## Your questions on dynamic web scraping / Selenium
+-------------------------------------------------------
+
+
+**Some advice**
+
+1. Have some version of Java installed. The latest SE version should work, but if you think that Java is an error source you might want to try other versions.
+
+```{r}
+system("java -version")
+```
+
+2. Get Selenium installed. The current implementation of the rsDriver() function automatically checks for current versions of the Selenium binary and associated drivers.
+
+3. Trouble-shooting:
+   - Selenium might require you to install the latest browser version (even if it's still beta!). If you can affort it, try it
+   - Some browsers might not work at all, so you might want to switch browsers (Chrome + Firefox tend to be the most reliable options)
+   - Add exception to firewall / antivirus software
+   - Consult Stackoverflow
+
+
+
+

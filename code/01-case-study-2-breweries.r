@@ -27,16 +27,13 @@ library(rnaturalearth)
 browseURL("http://www.biermap24.de/brauereiliste.php") 
 
 
-
 ## step 1: fetch list of cities with breweries
 url <- "http://www.biermap24.de/brauereiliste.php"
 content <- read_html(url)
-anchors <- html_nodes(content, xpath = "//tr/td[2]")
+anchors <- html_nodes(content, xpath = "//tr/td[3]")
 cities <- html_text(anchors)
 cities
 cities <- str_trim(cities)
-cities <- cities[str_detect(cities, "^[[:upper:]]+.")]
-cities <- cities[6:length(cities)]
 length(cities)
 length(unique(cities))
 sort(table(cities))
@@ -44,26 +41,31 @@ unique_cities <- unique(cities)
 
 ## step 2: geocode cities
 # get free key for mapquest API at browseURL("https://developer.mapquest.com/")
-#load("/Users/s.munzert/rkeys.RDa") # import API key (or paste it here in openstreetmap object)
+#load("/Users/simonmunzert/rkeys.RDa") # import API key (or paste it here in openstreetmap object)
 
-pos <- data.frame(lon = NA, lat = NA)
-if (!file.exists("geocodes_breweries.RData")){
-  for (i in 1:length(unique_cities)) {
-    pos[i,] <- try(nominatim::osm_search(unique_cities[i], country_codes = "de", key = openstreetmap) %>% dplyr::select(lon, lat))
+n_cities <- length(unique_cities)
+coords_df <- data.frame(city = rep(NA, n_cities), lon = rep(NA, n_cities), lat = rep(NA, n_cities), stringsAsFactors = FALSE)
+if (!file.exists("coords_breweries.RData")){
+  for (i in 1:n_cities) {
+    coords <- try(nominatim::osm_search(unique_cities[i], country_codes = "de", key = openstreetmap))
+   coords_df$city[i] <- unique_cities[i]
+   if(nrow(coords) > 0) {
+   coords_df$lon[i] <- as.numeric(coords$lon)
+   coords_df$lat[i] <- as.numeric(coords$lat)
+   }else{
+     coords_df$lon[i] <- NA
+     coords_df$lat[i] <- NA
+   }
   }
-  pos$city <- unique_cities
-  pos <- filter(pos, !str_detect(lon, "Error"))
-  pos$lon <- as.numeric(pos$lon)
-  pos$lat <- as.numeric(pos$lat)
-  save(pos, file="geocodes_breweriers.RData")
+  save(coords_df, file="coords_breweries.RData")
 } else {
-  load("geocodes_breweries.RData")
+  load("coords_breweries.RData")
 }
-head(pos)
+head(coords_df)
 
 
 ## step 3: plot breweries of Germany
-pos <- filter(pos, lon >= 6, lon <= 15, lat >= 47, lat <= 55)
+pos <- filter(coords_df, lon >= 6, lon <= 15, lat >= 47, lat <= 55)
 worldmap <- rnaturalearth::ne_countries(scale = 'medium', type = 'map_units', returnclass = 'sf')
 germany <- worldmap[worldmap$name == 'Germany',]
 ggplot() + geom_sf(data = germany) + theme_bw() + geom_point(aes(lon,lat), data = pos, size = .5, color = "red") 
