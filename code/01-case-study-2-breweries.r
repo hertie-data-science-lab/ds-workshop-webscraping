@@ -41,7 +41,7 @@ unique_cities <- unique(cities)
 
 ## step 2: geocode cities
 # get free key for mapquest API at browseURL("https://developer.mapquest.com/")
-#load("/Users/simonmunzert/rkeys.RDa") # import API key (or paste it here in openstreetmap object)
+load("/Users/s.munzert/rkeys.RDa") # import API key (or paste it here in openstreetmap object)
 
 n_cities <- length(unique_cities)
 coords_df <- data.frame(city = rep(NA, n_cities), lon = rep(NA, n_cities), lat = rep(NA, n_cities), stringsAsFactors = FALSE)

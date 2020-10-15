@@ -50,6 +50,7 @@ searchElem$clickElement() # click on button
 
 # store index page
 output <- remDr$getPageSource(header = TRUE)
+dir.create("data")
 write(output[[1]], file = "data/imdb-data-movies.html")
 
 # close connection

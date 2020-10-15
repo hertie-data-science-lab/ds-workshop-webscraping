@@ -32,7 +32,7 @@ library(rvest)
 ## Static scraping case study: mapping breweries
 ---------------------------------
 
-See 01-case-study-2-breweries.r
+See `01-case-study-2-breweries.r`
 
 
 ## Your questions on regex and static web scraping
@@ -70,7 +70,7 @@ I would like to scrape text in non-latin scripts (Chinese text specifically). Is
 ## Dynamic scraping case study: querying IMDb
 -------------------------------------------------
 
-See 03-case-study-selenium.r
+See `03-case-study-selenium.r`
 
 
 ## Your questions on dynamic web scraping / Selenium
