@@ -64,7 +64,7 @@ rev_raw[1]
 ## step 4: tidy data
 rev_all <- rev_raw %>% str_split("\\n") %>% unlist 
 surname <- str_extract(rev_all, "[[:alpha:]-]+")
-prename <- str_extract(rev_all, " [.[:alpha:]]+")
+prename <- str_extract(rev_all, " [.[:alpha:]-]+")
 rev_df <- data.frame(raw = rev_all, surname = surname, prename = prename, stringsAsFactors = F)
 rev_df$institution <- NA
   for(i in 1:nrow(rev_df)) {

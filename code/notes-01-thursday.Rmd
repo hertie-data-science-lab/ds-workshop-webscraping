@@ -65,6 +65,9 @@ xpath <- "//h2[./span[@id='Anthropology']]/following-sibling::ul[1]/li"
 html_nodes(url_parsed, xpath = xpath) %>% html_text()
 ```
 
+
+
+
 <br>
 
 *Python vs. R*
