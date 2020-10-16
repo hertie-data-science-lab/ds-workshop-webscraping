@@ -23,7 +23,15 @@ library(rvest)
 ---------------------------------
 
 12-12.50pm: Tapping web APIs
-1-1.50pm: Scraping ethics and workflow
+01-01.50pm: Scraping ethics and workflow
+
+
+## Follow-ups
+---------------------------------
+
+Extracting data from PDFs
+- https://github.com/ropensci/tabulizer
+- https://pd3f.com/
 
 
 ## API tutorial
@@ -54,6 +62,7 @@ See 04-case-study-2-wiki-pageviews.r
 - Twitter: check out https://github.com/ropensci/rtweet
 
 
+
 ## Workflow and good practice case study
 ---------------------------------
 
@@ -64,6 +73,11 @@ See 03b-scraping-good-practice.r
 ## Q & A
 ---------------------------------
 
+1. I know it's not the focus of this seminar, but if there is time tomorrow, maybe you could talk a bit about R web crawling tools? An application example would be the crawling of domains for certain keywords. (Maximilian Kupi)
+2. I have an issue with scraping the website socialbakers.com. The website is sometimes timing out connections because it's on a cloudflare protection that introduces some latency before accessing the website if it's accessed regularly and quickly. I would like to solve that. Also, it has a signup form that after I fill in and then click submit, the website is open to see all sections without email verification. (Haytham Mones)
+3. What bad things can happen to me when I scrape data from the web?
 
-
-
+- https://github.com/salimk/Rcrawler
+- https://www.socialbakers.com/robots.txt
+- https://www.socialbakers.com/online-terms-and-conditions
+- https://help.nytimes.com/hc/en-us/articles/115014893428-Terms-of-service
