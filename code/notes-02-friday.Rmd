@@ -1,0 +1,69 @@
+---
+title: "A Primer to Web Scraping with R - Meeting 2 Notes"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+
+## Workshop logistics
+---------------------------------
+
+- Please fill out the feedback form after this workshop! https://docs.google.com/forms/d/e/1FAIpQLSdp9Z4IWAO1cyf3-MVwpCKN-Ydn0mwXzaQ9C0L5H67B7aBGOA/viewform?vc=0&c=0&w=1&flr=0&usp=mail_form_link
+
+
+
+## Today's agenda
+---------------------------------
+
+12-12.50pm: Tapping web APIs
+1-1.50pm: Scraping ethics and workflow
+
+
+## API tutorial
+---------------------------------
+
+See 04a-tapping-apis.r
+
+
+
+## API client case study
+---------------------------------
+
+See 04-case-study-2-wiki-pageviews.r
+
+
+
+## Q & A
+---------------------------------
+
+1. What’s the difference between API and API clients?
+2. If the APIs are available in JSON and XML formats, any advice which format to choose?
+3. If I don't find an API for a service or data I want to use, does that mean there is none?
+4. How can I collect 1 million Tweets?
+5. I have an impression that much more social science publications use twitter data than FB posts. Is there a technical or rather legal/ethical reason for that? Could you highlight the difference between these two social media platforms in terms of scraping?
+
+
+- About the API's, one thing that worth to share is that when there is not an official API for some database, sometimes software developers creates non-official API to make this job easier. Before any attempt to do a web scraping, it is nice to have a look at Github explorer for instance.
+- Twitter: check out https://github.com/ropensci/rtweet
+
+
+## Workflow and good practice case study
+---------------------------------
+
+See 02d-scraping-workflow.r
+See 03b-scraping-good-practice.r
+
+
+## Q & A
+---------------------------------
+
+
+
+
