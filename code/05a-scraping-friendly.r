@@ -5,7 +5,8 @@
 
 ## peparations -------------------
 
-source("packages.r")
+library(rvest)
+library(httr)
 
 
 ## Staying friendly on the web ------
@@ -14,15 +15,27 @@ source("packages.r")
 # don't bombard server
 # respect robots.txt
 
-# add User-Agent string
-url <- "http://spiegel.de/schlagzeilen"
-browseURL("http://www.whoishostingthis.com/tools/user-agent/")
-uastring <- "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36"
-session <- html_session(url, user_agent(uastring))
+# add header fields with httr::GET
+browseURL("http://httpbin.org")
+GET("http://httpbin.org/headers")
+GET("http://httpbin.org/headers", add_headers(`User-Agent` = R.Version()$version.string))
+
+GET("http://httpbin.org/headers", add_headers(From = "my@email.com"))
+GET("http://httpbin.org/headers", add_headers(From = "my@email.com",
+                                              `User-Agent` = R.Version()$version.string))
+
+# example
+url_response <- GET("http://spiegel.de/schlagzeilen", 
+                    add_headers(From = "my@email.com"))
+url_parsed <- url_response  %>% read_html()
+url_parsed %>% html_nodes(".schlagzeilen-headline") %>%  html_text()
+
 
 # add header fields with rvest + httr
-session <- html_session(url, add_headers(From = "my@email.com", `User-Agent` = "R Scraper"))
+url <- "http://spiegel.de/schlagzeilen"
+session <- html_session(url, add_headers(From = "my@email.com"))
 headlines <- session %>% html_nodes(".schlagzeilen-headline") %>%  html_text()
+
 
 
 # don't bombard server

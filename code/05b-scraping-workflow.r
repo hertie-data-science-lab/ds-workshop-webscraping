@@ -5,7 +5,8 @@
 
 ## peparations -------------------
 
-source("packages.r")
+library(rvest)
+library(httr)
 
 
 ## how to create functions ------------

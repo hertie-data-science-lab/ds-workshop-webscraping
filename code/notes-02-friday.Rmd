@@ -66,8 +66,8 @@ See 04-case-study-2-wiki-pageviews.r
 ## Workflow and good practice case study
 ---------------------------------
 
-See 02d-scraping-workflow.r
-See 03b-scraping-good-practice.r
+See 05a-scraping-friendly.r
+See 05b-scraping-workflow.r
 
 
 ## Q & A

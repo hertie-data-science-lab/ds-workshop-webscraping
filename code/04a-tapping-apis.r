@@ -31,7 +31,7 @@ devtools::install_github("hrbrmstr/ipapi")
 library(ipapi)
 
 # function call
-ip_df <- geolocate(c(NA, "", "10.0.1.1", "", "72.33.67.89", "www.spiegel.de", "search.twitter.com"), .progress=TRUE)
+ip_df <- geolocate(c(NA, "", "10.0.1.1", "72.33.67.89", "www.spiegel.de", "search.twitter.com"), .progress=TRUE)
 View(ip_df)
 
 
