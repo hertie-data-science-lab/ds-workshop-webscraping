@@ -11,7 +11,7 @@ library(httr)
 
 ## how to create functions ------------
 
-# R is a functional programming lanugage, i.e. it provides many tools for the creation and manipulation of functions
+# R is a functional programming language, i.e. it provides many tools for the creation and manipulation of functions
 # you can do virtually anything with functions: assign them to variables, store them in lists, pass them as arguments to other functions, ...
 # very helpful in obeying the "don't repeat yourself" a.k.a. DRY principle
 # on functions in R:
@@ -139,7 +139,7 @@ str(elements[!succeeded])
 
 
 ## Scheduling scraping tasks on Windows -------
-<- 
+
 browseURL("https://cran.r-project.org/web/packages/taskscheduleR/vignettes/taskscheduleR.html")
 
 

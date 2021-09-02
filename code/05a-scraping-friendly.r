@@ -19,6 +19,8 @@ library(httr)
 browseURL("http://httpbin.org")
 GET("http://httpbin.org/headers")
 GET("http://httpbin.org/headers", add_headers(`User-Agent` = R.Version()$version.string))
+GET("http://httpbin.org/headers", add_headers(`User-Agent` = "Hello there!"))
+
 
 GET("http://httpbin.org/headers", add_headers(From = "my@email.com"))
 GET("http://httpbin.org/headers", add_headers(From = "my@email.com",
@@ -28,12 +30,12 @@ GET("http://httpbin.org/headers", add_headers(From = "my@email.com",
 url_response <- GET("http://spiegel.de/schlagzeilen", 
                     add_headers(From = "my@email.com"))
 url_parsed <- url_response  %>% read_html()
-url_parsed %>% html_nodes(".schlagzeilen-headline") %>%  html_text()
+url_parsed %>% html_nodes(".mr-6") %>%  html_text()
 
 
 # add header fields with rvest + httr
 url <- "http://spiegel.de/schlagzeilen"
-session <- html_session(url, add_headers(From = "my@email.com"))
+session <- html_session(url, add_headers(From = "munzert@hertie-school.org"))
 headlines <- session %>% html_nodes(".schlagzeilen-headline") %>%  html_text()
 
 
