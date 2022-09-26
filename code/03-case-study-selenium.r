@@ -18,7 +18,7 @@ library(rvest)
 library(RSelenium)
 
 # initiate Selenium driver
-rD <- rsDriver(browser = "chrome") 
+rD <- rsDriver(browser = "firefox") 
 remDr <- rD[["client"]]
 
 # start browser, navigate to page
