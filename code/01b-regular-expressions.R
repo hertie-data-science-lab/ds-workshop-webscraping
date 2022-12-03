@@ -63,6 +63,8 @@ str_extract(example.obj, "sentence$")
 str_extract(example.obj, "sentence.$")
 
 # pipe operator
+str_extract_all(example.obj, "tiny|sentence")
+
 unlist(str_extract_all(example.obj, "tiny|sentence"))
 
 # wildcard

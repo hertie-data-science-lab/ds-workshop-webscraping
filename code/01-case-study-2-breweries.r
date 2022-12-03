@@ -17,10 +17,10 @@
 library(tidyverse)
 library(rvest)
 library(stringr)
-# devtools::install_github("hrbrmstr/nominatim")
 library(nominatim)
 library(sf)
 library(rnaturalearth)
+library(janitor)
 
 ## inspect the source code in your browser ---------------
 
@@ -29,19 +29,19 @@ browseURL("http://www.biermap24.de/brauereiliste.php")
 
 ## step 1: fetch list of cities with breweries
 url <- "http://www.biermap24.de/brauereiliste.php"
-content <- read_html(url)
+content <- read_html(url, encoding = "utf-8")
 anchors <- html_nodes(content, xpath = "//tr/td[3]")
 cities <- html_text(anchors)
 cities
 cities <- str_trim(cities)
 length(cities)
 length(unique(cities))
-sort(table(cities))
+tabyl(cities) %>% arrange(desc(n)) %>% head()
 unique_cities <- unique(cities)
 
 ## step 2: geocode cities
 # get free key for mapquest API at browseURL("https://developer.mapquest.com/")
-load("/Users/s.munzert/rkeys.RDa") # import API key (or paste it here in openstreetmap object)
+load("/Users/simonmunzert/rkeys.RDa") # import API key (or paste it here in openstreetmap object)
 
 n_cities <- length(unique_cities)
 coords_df <- data.frame(city = rep(NA, n_cities), lon = rep(NA, n_cities), lat = rep(NA, n_cities), stringsAsFactors = FALSE)
@@ -69,4 +69,3 @@ pos <- filter(coords_df, lon >= 6, lon <= 15, lat >= 47, lat <= 55)
 worldmap <- rnaturalearth::ne_countries(scale = 'medium', type = 'map_units', returnclass = 'sf')
 germany <- worldmap[worldmap$name == 'Germany',]
 ggplot() + geom_sf(data = germany) + theme_bw() + geom_point(aes(lon,lat), data = pos, size = .5, color = "red") 
-
